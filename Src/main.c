@@ -35,6 +35,7 @@
 #include "stm32f4xx_hal.h"
 #include "usb_device.h"
 #include "usbd_cdc.h"
+#include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -49,6 +50,7 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+void blink();
 
 /* USER CODE BEGIN PFP */
 
@@ -72,12 +74,51 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
+  uint32_t l = 7;
+  uint8_t msg[] = "working";
+  uint8_t buf[CDC_DATA_FS_OUT_PACKET_SIZE];
+  buf[0] = 0;
 
   while (1)
   {
 
+      //blink a red led
+      HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
+      HAL_Delay(500);
+      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+      HAL_Delay(500);
+      if(hUsbDeviceFS.dev_connection_status && hUsbDeviceFS.dev_state == USBD_STATE_CONFIGURED) {
+          //toggle orange led
+          HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+          CDC_Receive_FS(buf,(uint16_t)CDC_DATA_FS_OUT_PACKET_SIZE);
+          uint8_t i = 0;
+          while(buf[i] != '\r' && buf[i] != '\n' && buf[i] != 0){
+              //blink a green led
+              HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+              HAL_Delay(300);
+              HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+              HAL_Delay(300);
+              i++;
+          }
+          if(i)
+              CDC_Transmit_FS(buf,i);
+          buf[0] = 0;
+      }
+      /*if(hUsbDeviceFS.dev_connection_status) {
+                HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
+                CDC_Transmit_FS(msg,l);
+                uint8_t buf[CDC_DATA_FS_OUT_PACKET_SIZE];
+                HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
+     }*/
   }
 
+}
+
+void Buttton_Callback(void)
+{
+    uint32_t l = 7;
+    uint8_t msg[] = "working";
+    CDC_Transmit_FS(msg,l);
 }
 
 /** System Clock Configuration
@@ -184,11 +225,11 @@ void MX_GPIO_Init(void)
   /*Configure GPIO pin : PA0 */
   GPIO_InitStruct.Pin = GPIO_PIN_0;
   //GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 2, 0);
   HAL_NVIC_EnableIRQ(EXTI0_IRQn);
-  HAL_NVIC_SetPriority(EXTI0_IRQn, 1, 1);
 
   /*Configure GPIO pin : PA4 */
   GPIO_InitStruct.Pin = GPIO_PIN_4;
@@ -246,10 +287,6 @@ void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
-
-/* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
 
 #ifdef USE_FULL_ASSERT
 

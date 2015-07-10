@@ -530,7 +530,8 @@ USBD_StatusTypeDef USBD_LL_IsoOUTIncomplete(USBD_HandleTypeDef  *pdev, uint8_t e
 */
 USBD_StatusTypeDef USBD_LL_DevConnected(USBD_HandleTypeDef  *pdev)
 {
-  return USBD_OK;
+    pdev->dev_connection_status = 0x01;
+    return USBD_OK;
 }
 
 /**
@@ -543,7 +544,8 @@ USBD_StatusTypeDef USBD_LL_DevDisconnected(USBD_HandleTypeDef  *pdev)
 {
   /* Free Class Resources */
   pdev->dev_state = USBD_STATE_DEFAULT;
-  pdev->pClass->DeInit(pdev, pdev->dev_config);  
+  pdev->pClass->DeInit(pdev, pdev->dev_config);
+  pdev->dev_connection_status = 0x00;
    
   return USBD_OK;
 }

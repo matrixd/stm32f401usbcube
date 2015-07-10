@@ -41,6 +41,7 @@
 
 /* External variables --------------------------------------------------------*/
 extern PCD_HandleTypeDef hpcd_USB_OTG_FS;
+extern void Buttton_Callback();
 
 /******************************************************************************/
 /*            Cortex-M4 Processor Interruption and Exception Handlers         */ 
@@ -82,7 +83,10 @@ void OTG_FS_IRQHandler(void)
   /* USER CODE END OTG_FS_IRQn 1 */
 }
 
-
+void EXTI0_IRQHandler(void)
+{
+    Buttton_Callback();
+}
 /* USER CODE BEGIN 1 */
 
 /* USER CODE END 1 */

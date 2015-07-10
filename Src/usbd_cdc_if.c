@@ -229,15 +229,15 @@ static int8_t CDC_Control_FS  (uint8_t cmd, uint8_t* pbuf, uint16_t length)
   * @param  Len: Number of data received (in bytes)
   * @retval Result of the operation: USBD_OK if all operations are OK else USBD_FAIL
   */
-uint8_t CDC_Receive_FS (uint8_t* Buf, uint32_t *Len)
+uint8_t CDC_Receive_FS (uint8_t* Buf, uint16_t Len)
 {
-  if(*Len < CDC_DATA_FS_OUT_PACKET_SIZE){
+  if(Len < CDC_DATA_FS_OUT_PACKET_SIZE){
     uint8_t tmp[CDC_DATA_FS_OUT_PACKET_SIZE];
     USBD_CDC_SetRxBuffer(hUsbDevice_0, tmp);
     USBD_CDC_ReceivePacket(hUsbDevice_0);
-    for(uint32_t i = 0; i < *Len; i++){
-              Buf[i] = tmp[i];
-          }
+    for(uint32_t i = 0; i < Len && tmp[i] != 0; i++){
+        Buf[i] = tmp[i];
+    }
   } else {
     USBD_CDC_SetRxBuffer(hUsbDevice_0, Buf);
     USBD_CDC_ReceivePacket(hUsbDevice_0);
@@ -260,7 +260,7 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */ 
-  USBD_CDC_SetTxBuffer(hUsbDevice_0, Buf, Len);   
+  USBD_CDC_SetTxBuffer(hUsbDevice_0, &Buf[0], Len);
   result = USBD_CDC_TransmitPacket(hUsbDevice_0);
   /* USER CODE END 7 */ 
   return result;
