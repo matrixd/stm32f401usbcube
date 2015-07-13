@@ -50,7 +50,6 @@
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-void blink();
 
 /* USER CODE BEGIN PFP */
 
@@ -74,35 +73,25 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USB_DEVICE_Init();
-  uint32_t l = 7;
-  uint8_t msg[] = "working";
-  uint8_t buf[CDC_DATA_FS_OUT_PACKET_SIZE];
-  buf[0] = 0;
 
   while (1)
   {
-
+      HAL_Delay(100);
       //blink a red led
-      HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_14);
-      HAL_Delay(500);
-      HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
-      HAL_Delay(500);
       if(hUsbDeviceFS.dev_connection_status && hUsbDeviceFS.dev_state == USBD_STATE_CONFIGURED) {
           //toggle orange led
           HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-          CDC_Receive_FS(buf,(uint16_t)CDC_DATA_FS_OUT_PACKET_SIZE);
-          uint8_t i = 0;
-          while(buf[i] != '\r' && buf[i] != '\n' && buf[i] != 0){
-              //blink a green led
+          uint8_t buf[64];
+          uint16_t len = CDC_ReadRx_C(buf,64);
+
+          if(len){
+              //uint8_t msg[] = "\n \n";
+              //msg[1] = len;
+              //CDC_Transmit_FS(msg,3);
               HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-              HAL_Delay(300);
-              HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
-              HAL_Delay(300);
-              i++;
+              CDC_Transmit_FS(buf,len);
           }
-          if(i)
-              CDC_Transmit_FS(buf,i);
-          buf[0] = 0;
+
       }
       /*if(hUsbDeviceFS.dev_connection_status) {
                 HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);

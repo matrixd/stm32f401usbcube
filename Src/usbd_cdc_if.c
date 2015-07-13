@@ -57,7 +57,7 @@
   /* USER CODE BEGIN 1 */
 /* Define size for the receive and transmit buffer over CDC */
 /* It's up to user to redefine and/or remove those define */
-#define APP_RX_DATA_SIZE  4
+#define APP_RX_DATA_SIZE  64
 #define APP_TX_DATA_SIZE  4
   /* USER CODE END 1 */  
 /**
@@ -229,22 +229,96 @@ static int8_t CDC_Control_FS  (uint8_t cmd, uint8_t* pbuf, uint16_t length)
   * @param  Len: Number of data received (in bytes)
   * @retval Result of the operation: USBD_OK if all operations are OK else USBD_FAIL
   */
-uint8_t CDC_Receive_FS (uint8_t* Buf, uint16_t Len)
-{
-  if(Len < CDC_DATA_FS_OUT_PACKET_SIZE){
-    uint8_t tmp[CDC_DATA_FS_OUT_PACKET_SIZE];
-    USBD_CDC_SetRxBuffer(hUsbDevice_0, tmp);
-    USBD_CDC_ReceivePacket(hUsbDevice_0);
-    for(uint32_t i = 0; i < Len && tmp[i] != 0; i++){
-        Buf[i] = tmp[i];
-    }
-  } else {
-    USBD_CDC_SetRxBuffer(hUsbDevice_0, Buf);
-    USBD_CDC_ReceivePacket(hUsbDevice_0);
-  }
-  return (USBD_OK);
+uint32_t CDC_GetRxCount_FS(){
+    return ((USBD_CDC_HandleTypeDef*) hUsbDevice_0->pClassData)->RxLength;
 }
 
+#ifdef MULTIBUFDATA_USR
+
+#define INBUFSIZE 64
+uint8_t inbuf[INBUFSIZE];
+uint8_t inbufB = 0;
+uint8_t inbufE = 0;
+//receive count
+uint8_t rc = 0;
+
+//data will be lost if it's not read
+uint8_t CDC_Receive_FS (uint8_t* Buf, uint32_t *len)
+{
+  /*if(*len < CDC_DATA_FS_OUT_PACKET_SIZE){
+      uint8_t tmp[CDC_DATA_FS_OUT_PACKET_SIZE];
+      USBD_CDC_SetRxBuffer(hUsbDevice_0,tmp);
+      uint8_t re = USBD_CDC_ReceivePacket(hUsbDevice_0);
+      if(re != USBD_OK)
+          return re;
+      for(uint8_t i = 0; i < *len && tmp[i] != 0; i++)
+          Buf[i] = tmp[i];
+      return re;
+  }
+  USBD_CDC_SetRxBuffer(hUsbDevice_0,&Buf[0]);
+  return USBD_CDC_ReceivePacket(hUsbDevice_0);*/
+
+    for(uint8_t i = 0; i< *len; i++){
+        if(inbufB == inbufE)
+            break;
+        inbuf[inbufE++] = Buf[i];
+        if(inbufE == INBUFSIZE)
+            inbufE = 0;
+    }
+    *len = 0;
+    rc++;
+}
+
+uint16_t CDC_ReadRx(uint8_t *buf, uint16_t len){
+    uint8_t i = 0;
+    if(re < 1)
+        return i;
+    for(; i< len; i++){
+        if(inbufB == inbufE)
+            break;
+        buf[i] = inbuf[inbufB++];
+        if(inbufB == INBUFSIZE)
+            inbufB = 0;
+    }
+    rc--;
+}
+
+#else
+
+uint8_t CDC_Receive_FS (uint8_t* Buf, uint32_t *len)
+{
+    return USBD_OK;
+}
+
+//copy
+uint16_t CDC_ReadRx_C(uint8_t *buf, uint16_t len){
+    USBD_CDC_ReceivePacket(hUsbDevice_0);
+    uint16_t i = 0;
+    if(CDC_GetRxCount_FS()){
+        for(;i < len && i < CDC_GetRxCount_FS(); i++){
+            buf[i] = UserRxBufferFS[i];
+        }
+        ((USBD_CDC_HandleTypeDef*) hUsbDevice_0->pClassData)->RxLength = 0;
+    }
+
+    return i;
+}
+
+//direct
+uint16_t CDC_ReadRx_D(uint8_t **buf){
+    USBD_CDC_ReceivePacket(hUsbDevice_0);
+    uint16_t len = CDC_GetRxCount_FS();
+    if(len){
+        ((USBD_CDC_HandleTypeDef*) hUsbDevice_0->pClassData)->RxLength = 0;
+        *buf = UserRxBufferFS;
+    } else
+        *buf = 0;
+    return len;
+}
+
+
+
+#endif
 /**
   * @brief  CDC_Transmit_FS
   *         Data send over USB IN endpoint are sent over CDC interface 

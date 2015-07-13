@@ -51,7 +51,12 @@ extern USBD_CDC_ItfTypeDef  USBD_Interface_fops_FS;
   * @{
   */ 
 uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len);
-uint8_t CDC_Receive_FS  (uint8_t* pbuf, uint16_t Len);
+uint8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *len);
+#ifdef MULTIBUFDATA_USR
+#else
+uint16_t CDC_ReadRx_C(uint8_t *buf, uint16_t len);
+uint16_t CDC_ReadRx_D(uint8_t **buf);
+#endif
 
 /**
   * @}
