@@ -77,37 +77,30 @@ int main(void)
   while (1)
   {
       HAL_Delay(100);
-      //blink a red led
       if(hUsbDeviceFS.dev_connection_status && hUsbDeviceFS.dev_state == USBD_STATE_CONFIGURED) {
           //toggle orange led
           HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-          uint8_t buf[64];
-          uint16_t len = CDC_ReadRx_C(buf,64);
+          uint8_t *buf;
+          uint16_t len = CDC_ReadRx_D(&buf);
 
           if(len){
-              //uint8_t msg[] = "\n \n";
-              //msg[1] = len;
-              //CDC_Transmit_FS(msg,3);
+              //geen led
               HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
               CDC_Transmit_FS(buf,len);
+              while(((USBD_CDC_HandleTypeDef*) hUsbDeviceFS.pClassData)->TxState == 1);
           }
 
       }
-      /*if(hUsbDeviceFS.dev_connection_status) {
-                HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_12);
-                CDC_Transmit_FS(msg,l);
-                uint8_t buf[CDC_DATA_FS_OUT_PACKET_SIZE];
-                HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_13);
-     }*/
   }
 
 }
 
+uint8_t msg[] = "working";
+
 void Buttton_Callback(void)
 {
-    uint32_t l = 7;
-    uint8_t msg[] = "working";
-    CDC_Transmit_FS(msg,l);
+
+    CDC_Transmit_FS(msg,7);
 }
 
 /** System Clock Configuration

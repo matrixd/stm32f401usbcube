@@ -173,7 +173,6 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 out/usbd_conf.o
  .data          0x0000000000000000        0x0 out/usb_device.o
  .bss           0x0000000000000000        0x0 out/usb_device.o
- .data          0x0000000000000000        0x0 out/main.o
  .bss           0x0000000000000000        0x0 out/main.o
  .data          0x0000000000000000        0x0 out/stm32f4xx_hal_msp.o
  .bss           0x0000000000000000        0x0 out/stm32f4xx_hal_msp.o
@@ -488,93 +487,93 @@ END GROUP
                 0x0000000008003f1c                USBD_LL_Delay
  .text          0x0000000008003f20       0x38 out/usb_device.o
                 0x0000000008003f20                MX_USB_DEVICE_Init
- .text          0x0000000008003f58       0xbc out/main.o
+ .text          0x0000000008003f58       0xa8 out/main.o
                 0x0000000008003f58                Buttton_Callback
-                0x0000000008003f78                SystemClock_Config
- .text          0x0000000008004014       0x18 out/stm32f4xx_hal_msp.o
-                0x0000000008004014                HAL_MspInit
- .text          0x000000000800402c       0x20 out/stm32f4xx_it.o
-                0x000000000800402c                SysTick_Handler
-                0x000000000800403c                OTG_FS_IRQHandler
-                0x0000000008004048                EXTI0_IRQHandler
- .text          0x000000000800404c      0x104 out/usbd_cdc_if.o
-                0x0000000008004054                CDC_Receive_FS
-                0x0000000008004088                CDC_GetRxCount_FS
-                0x000000000800409c                CDC_ReadRx_C
-                0x0000000008004104                CDC_ReadRx_D
-                0x0000000008004134                CDC_Transmit_FS
+                0x0000000008003f64                SystemClock_Config
+ .text          0x0000000008004000       0x18 out/stm32f4xx_hal_msp.o
+                0x0000000008004000                HAL_MspInit
+ .text          0x0000000008004018       0x2c out/stm32f4xx_it.o
+                0x0000000008004018                SysTick_Handler
+                0x0000000008004028                OTG_FS_IRQHandler
+                0x0000000008004034                EXTI0_IRQHandler
+ .text          0x0000000008004044      0x104 out/usbd_cdc_if.o
+                0x000000000800404c                CDC_Receive_FS
+                0x0000000008004080                CDC_GetRxCount_FS
+                0x0000000008004094                CDC_ReadRx_C
+                0x00000000080040fc                CDC_ReadRx_D
+                0x000000000800412c                CDC_Transmit_FS
  *(.text*)
  .text.Reset_Handler
-                0x0000000008004150       0x4c out/startup_stm32f401xc.o
-                0x0000000008004150                Reset_Handler
+                0x0000000008004148       0x4c out/startup_stm32f401xc.o
+                0x0000000008004148                Reset_Handler
  .text.Default_Handler
-                0x000000000800419c        0x2 out/startup_stm32f401xc.o
-                0x000000000800419c                RTC_Alarm_IRQHandler
-                0x000000000800419c                EXTI2_IRQHandler
-                0x000000000800419c                DebugMon_Handler
-                0x000000000800419c                SPI4_IRQHandler
-                0x000000000800419c                TIM1_CC_IRQHandler
-                0x000000000800419c                DMA2_Stream5_IRQHandler
-                0x000000000800419c                HardFault_Handler
-                0x000000000800419c                DMA1_Stream5_IRQHandler
-                0x000000000800419c                PVD_IRQHandler
-                0x000000000800419c                SDIO_IRQHandler
-                0x000000000800419c                TAMP_STAMP_IRQHandler
-                0x000000000800419c                PendSV_Handler
-                0x000000000800419c                NMI_Handler
-                0x000000000800419c                EXTI3_IRQHandler
-                0x000000000800419c                TIM1_UP_TIM10_IRQHandler
-                0x000000000800419c                I2C3_ER_IRQHandler
-                0x000000000800419c                I2C2_EV_IRQHandler
-                0x000000000800419c                DMA1_Stream2_IRQHandler
-                0x000000000800419c                FPU_IRQHandler
-                0x000000000800419c                UsageFault_Handler
-                0x000000000800419c                DMA2_Stream2_IRQHandler
-                0x000000000800419c                SPI1_IRQHandler
-                0x000000000800419c                TIM1_BRK_TIM9_IRQHandler
-                0x000000000800419c                DMA2_Stream3_IRQHandler
-                0x000000000800419c                USART6_IRQHandler
-                0x000000000800419c                DMA2_Stream0_IRQHandler
-                0x000000000800419c                TIM4_IRQHandler
-                0x000000000800419c                I2C1_EV_IRQHandler
-                0x000000000800419c                DMA1_Stream6_IRQHandler
-                0x000000000800419c                DMA1_Stream1_IRQHandler
-                0x000000000800419c                TIM3_IRQHandler
-                0x000000000800419c                RCC_IRQHandler
-                0x000000000800419c                Default_Handler
-                0x000000000800419c                EXTI15_10_IRQHandler
-                0x000000000800419c                ADC_IRQHandler
-                0x000000000800419c                DMA1_Stream7_IRQHandler
-                0x000000000800419c                TIM5_IRQHandler
-                0x000000000800419c                DMA2_Stream7_IRQHandler
-                0x000000000800419c                I2C3_EV_IRQHandler
-                0x000000000800419c                EXTI9_5_IRQHandler
-                0x000000000800419c                RTC_WKUP_IRQHandler
-                0x000000000800419c                SPI2_IRQHandler
-                0x000000000800419c                MemManage_Handler
-                0x000000000800419c                DMA1_Stream0_IRQHandler
-                0x000000000800419c                SVC_Handler
-                0x000000000800419c                EXTI4_IRQHandler
-                0x000000000800419c                WWDG_IRQHandler
-                0x000000000800419c                TIM2_IRQHandler
-                0x000000000800419c                OTG_FS_WKUP_IRQHandler
-                0x000000000800419c                TIM1_TRG_COM_TIM11_IRQHandler
-                0x000000000800419c                EXTI1_IRQHandler
-                0x000000000800419c                USART2_IRQHandler
-                0x000000000800419c                I2C2_ER_IRQHandler
-                0x000000000800419c                DMA2_Stream1_IRQHandler
-                0x000000000800419c                FLASH_IRQHandler
-                0x000000000800419c                DMA2_Stream4_IRQHandler
-                0x000000000800419c                BusFault_Handler
-                0x000000000800419c                USART1_IRQHandler
-                0x000000000800419c                SPI3_IRQHandler
-                0x000000000800419c                DMA1_Stream4_IRQHandler
-                0x000000000800419c                I2C1_ER_IRQHandler
-                0x000000000800419c                DMA2_Stream6_IRQHandler
-                0x000000000800419c                DMA1_Stream3_IRQHandler
- *fill*         0x000000000800419e        0x2 
- .text.startup  0x00000000080041a0      0x228 out/main.o
-                0x00000000080041a0                main
+                0x0000000008004194        0x2 out/startup_stm32f401xc.o
+                0x0000000008004194                RTC_Alarm_IRQHandler
+                0x0000000008004194                EXTI2_IRQHandler
+                0x0000000008004194                DebugMon_Handler
+                0x0000000008004194                SPI4_IRQHandler
+                0x0000000008004194                TIM1_CC_IRQHandler
+                0x0000000008004194                DMA2_Stream5_IRQHandler
+                0x0000000008004194                HardFault_Handler
+                0x0000000008004194                DMA1_Stream5_IRQHandler
+                0x0000000008004194                PVD_IRQHandler
+                0x0000000008004194                SDIO_IRQHandler
+                0x0000000008004194                TAMP_STAMP_IRQHandler
+                0x0000000008004194                PendSV_Handler
+                0x0000000008004194                NMI_Handler
+                0x0000000008004194                EXTI3_IRQHandler
+                0x0000000008004194                TIM1_UP_TIM10_IRQHandler
+                0x0000000008004194                I2C3_ER_IRQHandler
+                0x0000000008004194                I2C2_EV_IRQHandler
+                0x0000000008004194                DMA1_Stream2_IRQHandler
+                0x0000000008004194                FPU_IRQHandler
+                0x0000000008004194                UsageFault_Handler
+                0x0000000008004194                DMA2_Stream2_IRQHandler
+                0x0000000008004194                SPI1_IRQHandler
+                0x0000000008004194                TIM1_BRK_TIM9_IRQHandler
+                0x0000000008004194                DMA2_Stream3_IRQHandler
+                0x0000000008004194                USART6_IRQHandler
+                0x0000000008004194                DMA2_Stream0_IRQHandler
+                0x0000000008004194                TIM4_IRQHandler
+                0x0000000008004194                I2C1_EV_IRQHandler
+                0x0000000008004194                DMA1_Stream6_IRQHandler
+                0x0000000008004194                DMA1_Stream1_IRQHandler
+                0x0000000008004194                TIM3_IRQHandler
+                0x0000000008004194                RCC_IRQHandler
+                0x0000000008004194                Default_Handler
+                0x0000000008004194                EXTI15_10_IRQHandler
+                0x0000000008004194                ADC_IRQHandler
+                0x0000000008004194                DMA1_Stream7_IRQHandler
+                0x0000000008004194                TIM5_IRQHandler
+                0x0000000008004194                DMA2_Stream7_IRQHandler
+                0x0000000008004194                I2C3_EV_IRQHandler
+                0x0000000008004194                EXTI9_5_IRQHandler
+                0x0000000008004194                RTC_WKUP_IRQHandler
+                0x0000000008004194                SPI2_IRQHandler
+                0x0000000008004194                MemManage_Handler
+                0x0000000008004194                DMA1_Stream0_IRQHandler
+                0x0000000008004194                SVC_Handler
+                0x0000000008004194                EXTI4_IRQHandler
+                0x0000000008004194                WWDG_IRQHandler
+                0x0000000008004194                TIM2_IRQHandler
+                0x0000000008004194                OTG_FS_WKUP_IRQHandler
+                0x0000000008004194                TIM1_TRG_COM_TIM11_IRQHandler
+                0x0000000008004194                EXTI1_IRQHandler
+                0x0000000008004194                USART2_IRQHandler
+                0x0000000008004194                I2C2_ER_IRQHandler
+                0x0000000008004194                DMA2_Stream1_IRQHandler
+                0x0000000008004194                FLASH_IRQHandler
+                0x0000000008004194                DMA2_Stream4_IRQHandler
+                0x0000000008004194                BusFault_Handler
+                0x0000000008004194                USART1_IRQHandler
+                0x0000000008004194                SPI3_IRQHandler
+                0x0000000008004194                DMA1_Stream4_IRQHandler
+                0x0000000008004194                I2C1_ER_IRQHandler
+                0x0000000008004194                DMA2_Stream6_IRQHandler
+                0x0000000008004194                DMA1_Stream3_IRQHandler
+ *fill*         0x0000000008004196        0x2 
+ .text.startup  0x0000000008004198      0x230 out/main.o
+                0x0000000008004198                main
  .text.malloc   0x00000000080043c8       0x10 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
                 0x00000000080043c8                malloc
  .text.free     0x00000000080043d8       0x10 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
@@ -616,7 +615,7 @@ END GROUP
 .iplt           0x0000000008004b80        0x0
  .iplt          0x0000000000000000        0x0 out/startup_stm32f401xc.o
 
-.rodata         0x0000000008004b80       0x74
+.rodata         0x0000000008004b80       0x6c
                 0x0000000008004b80                . = ALIGN (0x4)
  *(.rodata)
  .rodata        0x0000000008004b80       0x10 out/stm32f4xx_hal_rcc.o
@@ -627,41 +626,39 @@ END GROUP
                                          0x58 (size before relaxing)
  *fill*         0x0000000008004be6        0x2 
  .rodata.str1.4
-                0x0000000008004be8        0x8 out/main.o
- .rodata.str1.4
-                0x0000000008004bf0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
-                0x0000000008004bf4                . = ALIGN (0x4)
+                0x0000000008004be8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000008004bec                . = ALIGN (0x4)
 
-.rel.dyn        0x0000000008004bf4        0x0
+.rel.dyn        0x0000000008004bec        0x0
  .rel.iplt      0x0000000000000000        0x0 out/startup_stm32f401xc.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
 
-.ARM            0x0000000008004bf4        0x0
-                0x0000000008004bf4                __exidx_start = .
+.ARM            0x0000000008004bec        0x0
+                0x0000000008004bec                __exidx_start = .
  *(.ARM.exidx*)
-                0x0000000008004bf4                __exidx_end = .
+                0x0000000008004bec                __exidx_end = .
 
-.preinit_array  0x0000000008004bf4        0x0
-                0x0000000008004bf4                PROVIDE (__preinit_array_start, .)
+.preinit_array  0x0000000008004bec        0x0
+                0x0000000008004bec                PROVIDE (__preinit_array_start, .)
  *(.preinit_array*)
-                0x0000000008004bf4                PROVIDE (__preinit_array_end, .)
+                0x0000000008004bec                PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000008004bf4        0x0
-                0x0000000008004bf4                PROVIDE (__init_array_start, .)
+.init_array     0x0000000008004bec        0x0
+                0x0000000008004bec                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array*)
-                0x0000000008004bf4                PROVIDE (__init_array_end, .)
+                0x0000000008004bec                PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000008004bf4        0x0
-                0x0000000008004bf4                PROVIDE (__fini_array_start, .)
+.fini_array     0x0000000008004bec        0x0
+                0x0000000008004bec                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array*)
-                0x0000000008004bf4                PROVIDE (__fini_array_end, .)
-                0x0000000008004bf4                _sidata = LOADADDR (.data)
+                0x0000000008004bec                PROVIDE (__fini_array_end, .)
+                0x0000000008004bec                _sidata = LOADADDR (.data)
 
-.data           0x0000000020000000      0x9a4 load address 0x0000000008004bf4
+.data           0x0000000020000000      0x9ac load address 0x0000000008004bec
                 0x0000000020000000                . = ALIGN (0x4)
                 0x0000000020000000                _sdata = .
  *(.data)
@@ -677,28 +674,30 @@ END GROUP
                 0x0000000020000124                USBD_FS_DeviceDesc
                 0x0000000020000138                USBD_LangIDDesc
                 0x000000002000013c                FS_Desc
- .data          0x0000000020000158       0x10 out/usbd_cdc_if.o
-                0x0000000020000158                USBD_Interface_fops_FS
+ .data          0x0000000020000158        0x8 out/main.o
+                0x0000000020000158                msg
+ .data          0x0000000020000160       0x10 out/usbd_cdc_if.o
+                0x0000000020000160                USBD_Interface_fops_FS
  *(.data*)
  .data.__malloc_av_
-                0x0000000020000168      0x408 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x0000000020000168                __malloc_av_
+                0x0000000020000170      0x408 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x0000000020000170                __malloc_av_
  .data.__malloc_trim_threshold
-                0x0000000020000570        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x0000000020000570                __malloc_trim_threshold
+                0x0000000020000578        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x0000000020000578                __malloc_trim_threshold
  .data.__malloc_sbrk_base
-                0x0000000020000574        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x0000000020000574                __malloc_sbrk_base
+                0x000000002000057c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x000000002000057c                __malloc_sbrk_base
  .data.impure_data
-                0x0000000020000578      0x428 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x0000000020000580      0x428 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
  .data._impure_ptr
-                0x00000000200009a0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
-                0x00000000200009a0                _impure_ptr
-                0x00000000200009a4                . = ALIGN (0x4)
-                0x00000000200009a4                _edata = .
+                0x00000000200009a8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-impure.o)
+                0x00000000200009a8                _impure_ptr
+                0x00000000200009ac                . = ALIGN (0x4)
+                0x00000000200009ac                _edata = .
                 0x0000000008005598                _siccmram = LOADADDR (.ccmram)
 
-.igot.plt       0x00000000200009a4        0x0 load address 0x0000000008005598
+.igot.plt       0x00000000200009ac        0x0 load address 0x0000000008005598
  .igot.plt      0x0000000000000000        0x0 out/startup_stm32f401xc.o
 
 .ccmram         0x0000000010000000        0x0 load address 0x0000000008005598
@@ -710,56 +709,56 @@ END GROUP
                 0x0000000010000000                _eccmram = .
                 0x0000000010000000                . = ALIGN (0x4)
 
-.bss            0x00000000200009a4      0x868
-                0x00000000200009a4                _sbss = .
-                0x00000000200009a4                __bss_start__ = _sbss
+.bss            0x00000000200009ac      0x868
+                0x00000000200009ac                _sbss = .
+                0x00000000200009ac                __bss_start__ = _sbss
  *(.bss)
- .bss           0x00000000200009a4        0x4 out/stm32f4xx_hal.o
- .bss           0x00000000200009a8        0x4 out/stm32f4xx_ll_usb.o
- .bss           0x00000000200009ac        0x1 out/usbd_ctlreq.o
- .bss           0x00000000200009ad        0x1 out/usbd_cdc.o
+ .bss           0x00000000200009ac        0x4 out/stm32f4xx_hal.o
+ .bss           0x00000000200009b0        0x4 out/stm32f4xx_ll_usb.o
+ .bss           0x00000000200009b4        0x1 out/usbd_ctlreq.o
+ .bss           0x00000000200009b5        0x1 out/usbd_cdc.o
  *(.bss*)
- *fill*         0x00000000200009ae        0x2 
+ *fill*         0x00000000200009b6        0x2 
  .bss.__malloc_max_total_mem
-                0x00000000200009b0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x00000000200009b0                __malloc_max_total_mem
- .bss.__malloc_max_sbrked_mem
-                0x00000000200009b4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x00000000200009b4                __malloc_max_sbrked_mem
- .bss.__malloc_top_pad
                 0x00000000200009b8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x00000000200009b8                __malloc_top_pad
+                0x00000000200009b8                __malloc_max_total_mem
+ .bss.__malloc_max_sbrked_mem
+                0x00000000200009bc        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x00000000200009bc                __malloc_max_sbrked_mem
+ .bss.__malloc_top_pad
+                0x00000000200009c0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x00000000200009c0                __malloc_top_pad
  .bss.__malloc_current_mallinfo
-                0x00000000200009bc       0x28 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
-                0x00000000200009bc                __malloc_current_mallinfo
+                0x00000000200009c4       0x28 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+                0x00000000200009c4                __malloc_current_mallinfo
  .bss.heap_end.4079
-                0x00000000200009e4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
+                0x00000000200009ec        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
  *(COMMON)
- COMMON         0x00000000200009e8      0x200 out/usbd_desc.o
-                0x00000000200009e8                USBD_StrDesc
- COMMON         0x0000000020000be8      0x3b4 out/usbd_conf.o
-                0x0000000020000be8                hpcd_USB_OTG_FS
- COMMON         0x0000000020000f9c      0x224 out/usb_device.o
-                0x0000000020000f9c                hUsbDeviceFS
- COMMON         0x00000000200011c0       0x48 out/usbd_cdc_if.o
-                0x00000000200011c0                hUsbDevice_0
-                0x00000000200011c4                UserRxBufferFS
-                0x0000000020001204                UserTxBufferFS
- COMMON         0x0000000020001208        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
-                0x0000000020001208                errno
-                0x000000002000120c                . = ALIGN (0x4)
-                0x000000002000120c                _ebss = .
-                0x000000002000120c                __bss_end__ = _ebss
+ COMMON         0x00000000200009f0      0x200 out/usbd_desc.o
+                0x00000000200009f0                USBD_StrDesc
+ COMMON         0x0000000020000bf0      0x3b4 out/usbd_conf.o
+                0x0000000020000bf0                hpcd_USB_OTG_FS
+ COMMON         0x0000000020000fa4      0x224 out/usb_device.o
+                0x0000000020000fa4                hUsbDeviceFS
+ COMMON         0x00000000200011c8       0x48 out/usbd_cdc_if.o
+                0x00000000200011c8                hUsbDevice_0
+                0x00000000200011cc                UserRxBufferFS
+                0x000000002000120c                UserTxBufferFS
+ COMMON         0x0000000020001210        0x4 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
+                0x0000000020001210                errno
+                0x0000000020001214                . = ALIGN (0x4)
+                0x0000000020001214                _ebss = .
+                0x0000000020001214                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x000000002000120c      0x400
-                0x000000002000120c                . = ALIGN (0x4)
-                0x000000002000120c                PROVIDE (end, .)
-                0x000000002000120c                PROVIDE (_end, .)
-                0x000000002000120c                . = (. + _Min_Heap_Size)
-                0x000000002000160c                . = (. + _Min_Stack_Size)
- *fill*         0x000000002000120c      0x400 
-                0x000000002000160c                . = ALIGN (0x4)
+                0x0000000020001214      0x400
+                0x0000000020001214                . = ALIGN (0x4)
+                0x0000000020001214                PROVIDE (end, .)
+                0x0000000020001214                PROVIDE (_end, .)
+                0x0000000020001214                . = (. + _Min_Heap_Size)
+                0x0000000020001614                . = (. + _Min_Stack_Size)
+ *fill*         0x0000000020001214      0x400 
+                0x0000000020001614                . = ALIGN (0x4)
 
 .memory_b1_text
  *(.mb1text)
@@ -833,7 +832,7 @@ END GROUP
                 0x0000000000000525       0x2d /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 OUTPUT(out/project.elf elf32-littlearm)
 
-.debug_line     0x0000000000000000     0x3368
+.debug_line     0x0000000000000000     0x33c7
  .debug_line    0x0000000000000000       0xaa out/startup_stm32f401xc.o
  .debug_line    0x00000000000000aa      0x168 out/system_stm32f4xx.o
  .debug_line    0x0000000000000212      0x22c out/stm32f4xx_hal.o
@@ -850,12 +849,12 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_line    0x000000000000261b      0x13c out/usbd_desc.o
  .debug_line    0x0000000000002757      0x2f2 out/usbd_conf.o
  .debug_line    0x0000000000002a49      0x17e out/usb_device.o
- .debug_line    0x0000000000002bc7      0x303 out/main.o
- .debug_line    0x0000000000002eca      0x144 out/stm32f4xx_hal_msp.o
- .debug_line    0x000000000000300e      0x19a out/stm32f4xx_it.o
- .debug_line    0x00000000000031a8      0x1c0 out/usbd_cdc_if.o
+ .debug_line    0x0000000000002bc7      0x348 out/main.o
+ .debug_line    0x0000000000002f0f      0x144 out/stm32f4xx_hal_msp.o
+ .debug_line    0x0000000000003053      0x1b4 out/stm32f4xx_it.o
+ .debug_line    0x0000000000003207      0x1c0 out/usbd_cdc_if.o
 
-.debug_info     0x0000000000000000     0xea6f
+.debug_info     0x0000000000000000     0xeb13
  .debug_info    0x0000000000000000       0x9d out/startup_stm32f401xc.o
  .debug_info    0x000000000000009d      0x51a out/system_stm32f4xx.o
  .debug_info    0x00000000000005b7      0x9db out/stm32f4xx_hal.o
@@ -872,12 +871,12 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_info    0x0000000000009f02      0x51e out/usbd_desc.o
  .debug_info    0x000000000000a420     0x1bcd out/usbd_conf.o
  .debug_info    0x000000000000bfed      0x705 out/usb_device.o
- .debug_info    0x000000000000c6f2     0x1155 out/main.o
- .debug_info    0x000000000000d847      0x2cd out/stm32f4xx_hal_msp.o
- .debug_info    0x000000000000db14      0x5aa out/stm32f4xx_it.o
- .debug_info    0x000000000000e0be      0x9b1 out/usbd_cdc_if.o
+ .debug_info    0x000000000000c6f2     0x11d0 out/main.o
+ .debug_info    0x000000000000d8c2      0x2cd out/stm32f4xx_hal_msp.o
+ .debug_info    0x000000000000db8f      0x5d3 out/stm32f4xx_it.o
+ .debug_info    0x000000000000e162      0x9b1 out/usbd_cdc_if.o
 
-.debug_abbrev   0x0000000000000000     0x2af9
+.debug_abbrev   0x0000000000000000     0x2b5c
  .debug_abbrev  0x0000000000000000       0x12 out/startup_stm32f401xc.o
  .debug_abbrev  0x0000000000000012      0x101 out/system_stm32f4xx.o
  .debug_abbrev  0x0000000000000113      0x2b7 out/stm32f4xx_hal.o
@@ -894,10 +893,10 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_abbrev  0x0000000000001d4d      0x1c4 out/usbd_desc.o
  .debug_abbrev  0x0000000000001f11      0x2bf out/usbd_conf.o
  .debug_abbrev  0x00000000000021d0      0x176 out/usb_device.o
- .debug_abbrev  0x0000000000002346      0x2b2 out/main.o
- .debug_abbrev  0x00000000000025f8       0xd1 out/stm32f4xx_hal_msp.o
- .debug_abbrev  0x00000000000026c9      0x194 out/stm32f4xx_it.o
- .debug_abbrev  0x000000000000285d      0x29c out/usbd_cdc_if.o
+ .debug_abbrev  0x0000000000002346      0x2e9 out/main.o
+ .debug_abbrev  0x000000000000262f       0xd1 out/stm32f4xx_hal_msp.o
+ .debug_abbrev  0x0000000000002700      0x1c0 out/stm32f4xx_it.o
+ .debug_abbrev  0x00000000000028c0      0x29c out/usbd_cdc_if.o
 
 .debug_aranges  0x0000000000000000      0x290
  .debug_aranges
@@ -953,7 +952,7 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_ranges  0x0000000000000398       0x18 out/usbd_conf.o
  .debug_ranges  0x00000000000003b0      0x148 out/main.o
 
-.debug_loc      0x0000000000000000     0x7898
+.debug_loc      0x0000000000000000     0x788c
  .debug_loc     0x0000000000000000      0x1b9 out/system_stm32f4xx.o
  .debug_loc     0x00000000000001b9      0x14e out/stm32f4xx_hal.o
  .debug_loc     0x0000000000000307      0x136 out/stm32f4xx_hal_pcd_ex.o
@@ -969,10 +968,10 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_loc     0x0000000000006943      0x313 out/usbd_desc.o
  .debug_loc     0x0000000000006c56      0x915 out/usbd_conf.o
  .debug_loc     0x000000000000756b       0x2c out/usb_device.o
- .debug_loc     0x0000000000007597       0xb1 out/main.o
- .debug_loc     0x0000000000007648       0x2c out/stm32f4xx_hal_msp.o
- .debug_loc     0x0000000000007674       0x2c out/stm32f4xx_it.o
- .debug_loc     0x00000000000076a0      0x1f8 out/usbd_cdc_if.o
+ .debug_loc     0x0000000000007597       0x79 out/main.o
+ .debug_loc     0x0000000000007610       0x2c out/stm32f4xx_hal_msp.o
+ .debug_loc     0x000000000000763c       0x58 out/stm32f4xx_it.o
+ .debug_loc     0x0000000000007694      0x1f8 out/usbd_cdc_if.o
 
 .debug_str      0x0000000000000000     0x2b3f
  .debug_str     0x0000000000000000      0x329 out/system_stm32f4xx.o
@@ -1006,11 +1005,11 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_str     0x00000000000029a7       0x48 out/usb_device.o
                                         0x63d (size before relaxing)
  .debug_str     0x00000000000029ef       0x5e out/main.o
-                                        0xccb (size before relaxing)
+                                        0xd2f (size before relaxing)
  .debug_str     0x0000000000002a4d       0x18 out/stm32f4xx_hal_msp.o
                                         0x578 (size before relaxing)
  .debug_str     0x0000000000002a65       0x46 out/stm32f4xx_it.o
-                                        0x53d (size before relaxing)
+                                        0x556 (size before relaxing)
  .debug_str     0x0000000000002aab       0x94 out/usbd_cdc_if.o
                                         0x733 (size before relaxing)
 
@@ -1036,7 +1035,7 @@ OUTPUT(out/project.elf elf32-littlearm)
  .comment       0x0000000000000000       0x71 out/stm32f4xx_it.o
  .comment       0x0000000000000000       0x71 out/usbd_cdc_if.o
 
-.debug_frame    0x0000000000000000     0x18e4
+.debug_frame    0x0000000000000000     0x18e0
  .debug_frame   0x0000000000000000       0x48 out/system_stm32f4xx.o
  .debug_frame   0x0000000000000048      0x188 out/stm32f4xx_hal.o
  .debug_frame   0x00000000000001d0       0x48 out/stm32f4xx_hal_pcd_ex.o
@@ -1052,17 +1051,17 @@ OUTPUT(out/project.elf elf32-littlearm)
  .debug_frame   0x0000000000001220       0xa8 out/usbd_desc.o
  .debug_frame   0x00000000000012c8      0x270 out/usbd_conf.o
  .debug_frame   0x0000000000001538       0x2c out/usb_device.o
- .debug_frame   0x0000000000001564       0x7c out/main.o
- .debug_frame   0x00000000000015e0       0x2c out/stm32f4xx_hal_msp.o
- .debug_frame   0x000000000000160c       0x4c out/stm32f4xx_it.o
- .debug_frame   0x0000000000001658       0xc0 out/usbd_cdc_if.o
- .debug_frame   0x0000000000001718       0x30 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
- .debug_frame   0x0000000000001748       0x54 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
- .debug_frame   0x000000000000179c       0x30 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mlock.o)
- .debug_frame   0x00000000000017cc       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
- .debug_frame   0x00000000000017f8       0x74 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
- .debug_frame   0x000000000000186c       0x58 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
- .debug_frame   0x00000000000018c4       0x20 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
+ .debug_frame   0x0000000000001564       0x6c out/main.o
+ .debug_frame   0x00000000000015d0       0x2c out/stm32f4xx_hal_msp.o
+ .debug_frame   0x00000000000015fc       0x58 out/stm32f4xx_it.o
+ .debug_frame   0x0000000000001654       0xc0 out/usbd_cdc_if.o
+ .debug_frame   0x0000000000001714       0x30 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
+ .debug_frame   0x0000000000001744       0x54 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mallocr.o)
+ .debug_frame   0x0000000000001798       0x30 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-mlock.o)
+ .debug_frame   0x00000000000017c8       0x2c /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-sbrkr.o)
+ .debug_frame   0x00000000000017f4       0x74 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-freer.o)
+ .debug_frame   0x0000000000001868       0x58 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-reent.o)
+ .debug_frame   0x00000000000018c0       0x20 /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libnosys.a(sbrk.o)
 
 Cross Reference Table
 
@@ -1075,8 +1074,8 @@ Buttton_Callback                                  out/main.o
                                                   out/stm32f4xx_it.o
 CDC_GetRxCount_FS                                 out/usbd_cdc_if.o
 CDC_ReadRx_C                                      out/usbd_cdc_if.o
-                                                  out/main.o
 CDC_ReadRx_D                                      out/usbd_cdc_if.o
+                                                  out/main.o
 CDC_Receive_FS                                    out/usbd_cdc_if.o
 CDC_Transmit_FS                                   out/usbd_cdc_if.o
                                                   out/main.o
@@ -1162,6 +1161,7 @@ HAL_GPIO_DeInit                                   out/stm32f4xx_hal_gpio.o
                                                   out/usbd_conf.o
 HAL_GPIO_EXTI_Callback                            out/stm32f4xx_hal_gpio.o
 HAL_GPIO_EXTI_IRQHandler                          out/stm32f4xx_hal_gpio.o
+                                                  out/stm32f4xx_it.o
 HAL_GPIO_Init                                     out/stm32f4xx_hal_gpio.o
                                                   out/main.o
                                                   out/usbd_conf.o
@@ -1634,5 +1634,6 @@ main                                              out/main.o
                                                   out/startup_stm32f401xc.o
 malloc                                            /usr/bin/../lib/gcc/arm-none-eabi/4.9.3/../../../../arm-none-eabi/lib/armv7-m/libc.a(lib_a-malloc.o)
                                                   out/usbd_cdc.o
+msg                                               out/main.o
 pFlash                                            out/stm32f4xx_hal_flash.o
                                                   out/stm32f4xx_hal_flash_ex.o

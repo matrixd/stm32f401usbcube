@@ -85,6 +85,7 @@ void OTG_FS_IRQHandler(void)
 
 void EXTI0_IRQHandler(void)
 {
+    HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
     Buttton_Callback();
 }
 /* USER CODE BEGIN 1 */
